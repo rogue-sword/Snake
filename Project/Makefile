@@ -1,4 +1,4 @@
-.PHONY: build run clean all
+.PHONY: build run clean all format
 
 build:
 	cmake -G Ninja -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -11,3 +11,7 @@ clean:
 	rm -rf build
 
 all: build run
+
+format:
+	find src/ -name '*.cpp' -o -name '*.h' | xargs clang-format -i
+
